@@ -18,7 +18,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    binding.pry
     if @article.save
       redirect_to article_path(@article)
     else
@@ -28,7 +27,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to article_path(@article), notice: "Article was successfully updated."
+      redirect_to article_path(@article), notice: "記事を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect_to articles_path, notice: 'Article was successfully destroyed.'
+    redirect_to articles_path, notice: '記事を削除しました'
   end
 
   private
