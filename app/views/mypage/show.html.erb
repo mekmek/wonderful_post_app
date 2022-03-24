@@ -3,6 +3,7 @@
 <h1>マイページ</h1>
 
 <%= link_to '新規作成', new_article_path, class: "btn btn-primary" %>
+<%= render partial: "search" %>
 <%= paginate @articles, theme: 'twitter-bootstrap-4' %>
 
 <table class="table">
