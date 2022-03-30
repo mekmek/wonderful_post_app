@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     articles = Article.all
-    articles = articles.where("title LIKE ?", "%#{title}%") if params[:title].present?
+    articles = articles.where("title LIKE ?", "%#{params[:title]}%") if params[:title].present?
     @articles = articles.page(params[:page])
   end
 
@@ -49,6 +49,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, tag_ids:[])
     end
 end
